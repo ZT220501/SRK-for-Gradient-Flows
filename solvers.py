@@ -1214,7 +1214,7 @@ class Cahn_Hilliard_Solver_2D_Constant_Timestep_Irregular_Domain():
             self.u_total.append(u_new)
             self.t_total.append(self.t_current)
 
-            energy_gradient_new, energy_non_linear_new = utils.energy_exact(u_new, self.mesh_grid, self.eps, bc=self.bc, case=self.energy_case)
+            energy_gradient_new, energy_non_linear_new = utils.energy_exact_irregular_domain(u_new, self.mesh_grid, self.eps, self.mask, bc=self.bc, case=self.energy_case)
             energy_new = energy_gradient_new + energy_non_linear_new
         
             # Check for monotonicity of the energy

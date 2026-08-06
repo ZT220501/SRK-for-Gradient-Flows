@@ -257,10 +257,6 @@ def RKG2_2D_CH(u_previous, mesh_grid, eps, dt, s, advective=False, bc="Periodic"
 # With Strang splitting, it can be used for solving the Allen-Cahn equation
 # The parameters have been printed and checked in the solver
 def RKL2_2D_irregular(u_previous, mesh_grid, mask, dt, s, bc="Neumann"):
-    print("RKL2_2D_irregular is called")
-    print("dt is " + str(dt))
-    print("s is " + str(s))
-    print("bc is " + str(bc))
     Y_j_2 = u_previous
     Y_j_1 = u_previous
     Y_j = u_previous
@@ -287,10 +283,6 @@ def RKL2_2D_irregular(u_previous, mesh_grid, mask, dt, s, bc="Neumann"):
 # With Strang splitting, it can be used for solving the Allen-Cahn equation
 # The parameters have been printed and checked in the solver
 def RKG2_2D_irregular(u_previous, mesh_grid, mask, dt, s, bc="Neumann"):
-    print("RKG2_2D_irregular is called")
-    print("dt is " + str(dt))
-    print("s is " + str(s))
-    print("bc is " + str(bc))
     Y_j_2 = u_previous
     Y_j_1 = u_previous
     Y_j = u_previous
@@ -317,11 +309,6 @@ def RKG2_2D_irregular(u_previous, mesh_grid, mask, dt, s, bc="Neumann"):
 # Three energy cases are implemented, depending on where to put the eps
 # The parameters have been printed and checked in the solver
 def RKL2_2D_CH_irregular(u_previous, mesh_grid, mask, eps, dt, s, bc="Periodic", energy_case=2):
-    print("RKL2_2D_CH_irregular is called")
-    print("dt is " + str(dt))
-    print("s is " + str(s))
-    print("bc is " + str(bc))
-    print("energy_case is " + str(energy_case))
     Y_j_2 = u_previous
     Y_j_1 = u_previous
     Y_j = u_previous
