@@ -1000,7 +1000,7 @@ class Allen_Cahn_Solver_2D_Constant_Timestep_Irregular_Domain():
         u_initial_condition = self.initial_condition(self.mesh_grid)
         u_initial_condition[~self.mask] = 0
         self.u_total = [u_initial_condition]
-        energy_gradient_new, energy_non_linear_new = utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps, self.bc, self.energy_case)
+        energy_gradient_new, energy_non_linear_new = utils.energy_exact_irregular_domain(self.u_total[0], self.mesh_grid, self.eps, self.mask, bc=self.bc, case=self.energy_case)
         self.energy_total = [[energy_gradient_new, energy_non_linear_new]]
         self.modified_energy_total = [[energy_gradient_new, energy_non_linear_new]]
 
@@ -1179,7 +1179,8 @@ class Cahn_Hilliard_Solver_2D_Constant_Timestep_Irregular_Domain():
         self.u_total = [u_initial_condition]
 
         self.t_total = [0]
-        self.energy_total = [utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps)]
+        energy_gradient_new, energy_non_linear_new = utils.energy_exact_irregular_domain(self.u_total[0], self.mesh_grid, self.eps, self.mask, bc=self.bc, case=self.energy_case)
+        self.energy_total = [[energy_gradient_new, energy_non_linear_new]]
 
         self.t_current = 0
 
