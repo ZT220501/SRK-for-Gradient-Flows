@@ -390,21 +390,22 @@ class Allen_Cahn_Solver_2D_Adaptive_Timestep():
     def substep_s_update(self, case="max"):
         if self.method_name == "RKL2_2D":
             if self.energy_case == 1:
-                self.s_new = round((-1 + np.sqrt(9 + 64 * self.dt / self.dx**2)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 64 * self.dt / self.dx**2)) / 2
             elif self.energy_case == 2:
-                self.s_new = round((-1 + np.sqrt(9 + 64 * self.dt * self.eps / self.dx**2)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 64 * self.dt * self.eps / self.dx**2)) / 2
             elif self.energy_case == 3:
-                self.s_new = round((-1 + np.sqrt(9 + 64 * self.dt * self.eps**2 / self.dx**2)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 64 * self.dt * self.eps**2 / self.dx**2)) / 2
         elif self.method_name == "RKG2_2D":
             if self.energy_case == 1:
-                self.s_new = round((-3 + np.sqrt(25 + 96 * self.dt / self.dx**2)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 96 * self.dt / self.dx**2)) / 2
             elif self.energy_case == 2:
-                self.s_new = round((-3 + np.sqrt(25 + 96 * self.dt * self.eps / self.dx**2)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 96 * self.dt * self.eps / self.dx**2)) / 2
             elif self.energy_case == 3:
-                self.s_new = round((-3 + np.sqrt(25 + 96 * self.dt * self.eps**2 / self.dx**2)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 96 * self.dt * self.eps**2 / self.dx**2)) / 2
         else:
             raise ValueError("Method name must be 'RKL2_2D' or 'RKG2_2D'. Check the spelling and the class implementation!")
         
+        self.s_new = math.ceil(self.s_new)
         if case == "max":
             self.s = max(self.s, self.s_new)
         elif case == "min":
@@ -897,22 +898,22 @@ class Cahn_Hilliard_Solver_2D_Adaptive_Timestep():
     def substep_s_update(self, case="max"):
         if self.method_name == "RKL2_2D_CH":
             if self.energy_case == 1:
-                self.s_new = round((-1 + np.sqrt(9 + 512 * self.dt / self.dx**4)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 512 * self.dt / self.dx**4)) / 2
             elif self.energy_case == 2:
-                self.s_new = round((-1 + np.sqrt(9 + 512 * self.dt * self.eps / self.dx**4)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 512 * self.dt * self.eps / self.dx**4)) / 2
             elif self.energy_case == 3:
-                self.s_new = round((-1 + np.sqrt(9 + 512 * self.dt * self.eps**2 / self.dx**4)) / 2)
+                self.s_new = (-1 + np.sqrt(9 + 512 * self.dt * self.eps**2 / self.dx**4)) / 2
         elif self.method_name == "RKG2_2D_CH":
             if self.energy_case == 1:
-                self.s_new = round((-3 + np.sqrt(25 + 768 * self.dt / self.dx**4)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 768 * self.dt / self.dx**4)) / 2
             elif self.energy_case == 2:
-                self.s_new = round((-3 + np.sqrt(25 + 768 * self.dt * self.eps / self.dx**4)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 768 * self.dt * self.eps / self.dx**4)) / 2
             elif self.energy_case == 3:
-                self.s_new = round((-3 + np.sqrt(25 + 768 * self.dt * self.eps**2 / self.dx**4)) / 2)
+                self.s_new = (-3 + np.sqrt(25 + 768 * self.dt * self.eps**2 / self.dx**4)) / 2
         else:
             raise ValueError("Method name must be 'RKL2_2D_CH' or 'RKG2_2D_CH'. Check the spelling and the class implementation!")
-        # For the Cahn-Hilliard equation, we give s some free space so that s_new is multiplied by a factor of 1.1
-        self.s_new = round(self.s_new * 1.02)
+        # For the Cahn-Hilliard equation, we give s some free space so that s_new is multiplied by a factor of 1.02
+        self.s_new = math.ceil(self.s_new * 1.02)
         # Compare s_new with s and update s accordingly
         if case == "max":
             self.s = max(self.s, self.s_new)
