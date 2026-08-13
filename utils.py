@@ -179,8 +179,8 @@ def second_derivative(u, x_grid, bc="Periodic"):
         u_second_derivative[-1] = 0
     elif bc == "Periodic":
         # Periodic boundary condition
-        u_second_derivative[0] = (u[1] - 2 * u[0] + u[-1]) / (x_grid[1] - x_grid[0])**2
-        u_second_derivative[-1] = (u[1] - 2 * u[0] + u[-1]) / (x_grid[1] - x_grid[0])**2
+        u_second_derivative[0] = (u[1] - 2 * u[0] + u[-2]) / (x_grid[1] - x_grid[0])**2
+        u_second_derivative[-1] = (u[1] - 2 * u[0] + u[-2]) / (x_grid[1] - x_grid[0])**2
     elif bc == "Neumann":
         # Homogeneous Neumann boundary condition
         u_second_derivative[0] = 2 * (u[1] - u[0]) / (x_grid[1] - x_grid[0])**2

@@ -694,7 +694,7 @@ class Cahn_Hilliard_Solver_2D_Constant_Timestep():
 
         self.t_total = [0]
         self.u_total = [self.initial_condition(self.mesh_grid)]
-        self.energy_total = [utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps)]
+        self.energy_total = [utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps, self.bc, self.energy_case)]
 
         self.t_current = 0
 
@@ -819,7 +819,7 @@ class Cahn_Hilliard_Solver_2D_Adaptive_Timestep():
 
         self.t_total = [0]
         self.u_total = [self.initial_condition(self.mesh_grid)]
-        self.energy_total = [utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps)]
+        self.energy_total = [utils.energy_exact(self.u_total[0], self.mesh_grid, self.eps, self.bc, self.energy_case)]
 
         self.t_current = 0
 
