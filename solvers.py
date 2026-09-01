@@ -1122,13 +1122,13 @@ class Allen_Cahn_Solver_2D_Constant_Timestep_Irregular_Domain():
 
         if not save:
             plt.figure(figsize=(5, 5))
-            plt.imshow(plot, origin='lower', cmap=cmap)
+            plt.imshow(plot, origin='lower', cmap=cmap, vmin=-1, vmax=1)
             plt.colorbar()
             plt.title('Heatmap of Allen-Cahn coarsening at time ' + str(round(t, 5)))
             plt.show()
         else:
             plt.figure(figsize=(5, 5))
-            plt.imshow(plot, origin='lower', cmap=cmap)
+            plt.imshow(plot, origin='lower', cmap=cmap, vmin=-1, vmax=1)
             plt.axis('off')
             save_path = os.path.join(save_path, self.method_name)
             os.makedirs(save_path, exist_ok=True) 
@@ -1255,13 +1255,13 @@ class Cahn_Hilliard_Solver_2D_Constant_Timestep_Irregular_Domain():
 
         if not save:
             plt.figure(figsize=(5, 5))
-            plt.imshow(plot, origin='lower', cmap=cmap)
+            plt.imshow(plot, origin='lower', cmap=cmap, vmin=-1, vmax=1)
             plt.colorbar()
             plt.title('Heatmap of Cahn-Hilliard coarsening at time ' + str(round(t, 5)))
             plt.show()
         else:
             plt.figure(figsize=(5, 5))
-            plt.imshow(plot, origin='lower', cmap=cmap)
+            plt.imshow(plot, origin='lower', cmap=cmap, vmin=-1, vmax=1)
             plt.axis('off')
             save_path = os.path.join(save_path, self.method_name)
             os.makedirs(save_path, exist_ok=True) 
